@@ -1,0 +1,85 @@
+type User {
+    id: ID! @id
+    avatar : String @default(value: "https://scontent-hkg3-1.cdninstagram.com/vp/51ea9f9……74447047_1561961433825017856_n.jpg?_nc_ht=scontent-hkg3-1.cdninstagram.com")
+    userName: String!
+    email : String! @unique
+    phoneNumber : String! @unique
+    password : String!
+    favoriteContents : [Content] @relation(name: "FavoriteContentsOfUser")
+    createdAt : DateTime! @createdAt
+    updatedAt : DateTime! @updatedAt
+}
+
+enum ContentType {
+    NETFLIX_SERIES
+    TV_SHOW
+    MOVIE
+}
+
+type Content {
+    id : ID! @id
+    title : String!
+    genres : [Genre] @relation(name: "GenresOfContent")
+    type : ContentType!
+    caption : String!
+    episodes : [Episode] @relation(name: "EpisodesOfContent")
+    actors : [Actor] @relation(name: "ActorsOfContent")
+    files : [File] @relation(name: "FilesOfContent")
+    createdAt : DateTime! @createdAt
+    updatedAt : DateTime! @updatedAt
+}
+
+type Actor {
+    id : ID! @id
+    name : String! @unique
+    contents : [Content] @relation(name: "ActorsOfContent")
+    createdAt : DateTime! @createdAt
+    updatedAt : DateTime! @updatedAt
+}
+
+type Episode {
+    id : ID! @id
+    content : Content @relation(name: "EpisodesOfContent")
+    title : String!
+    caption : String!
+    createdAt : DateTime! @createdAt
+    updatedAt : DateTime! @updatedAt
+}
+
+enum GenreType {
+    CHUSEOK
+    HALLOWEEN
+    K_DRAMA
+    US_TV_SERIES
+    BRITISH_TV_SERIES
+    ASIAN_TV_SERIES
+    KOREAN_MOVIE
+    US_MOVIE
+    ACTION
+    KIDS
+    ROMANCE
+    TEEN
+    ANIME
+    HISTORY
+    THRILLERS
+    FANTASY
+    ADVANTURES
+    AWARD_WINNINGS
+    DRAMAS
+    CRIME
+    SCI_FI
+}
+
+type Genre {
+    id : ID! @id
+    name : GenreType! @unique
+    contents : [Content] @relation(name: "GenresOfContent")
+}
+
+type File {
+    id : ID! @id
+    url : String!
+    content : Content @relation(name: "FilesOfContent")
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}

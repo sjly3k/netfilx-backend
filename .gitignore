@@ -1,0 +1,12 @@
+generated
+img
+node_modules
+
+*.yml
+*.xml
+*.lock
+*.iml
+.env
+
+
+
