@@ -1,0 +1,10 @@
+type Mutation {
+    createContent(
+        title : String!,
+        caption : String!,
+        genres : [String!],
+        actors : [String!],
+        type : ContentType!,
+        files : [String!]
+    ) : Boolean!
+}

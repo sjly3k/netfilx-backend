@@ -1,0 +1,23 @@
+{
+  "1" : {
+    "title" : "Pilot",
+    "caption" : "Overwhelmed by grief and anger after her husband's sudden death, acerbic real estate agent Jen meets tenderhearted Judy at a support group.",
+    "duration" : 1980,
+    "season" : 1,
+    "sequence" : 1
+  },
+  "2" : {
+    "title" : "Maybe I'm Crazy",
+    "caption" : "Amid her escalating rage over the stalled investigation into her husband's death, Jen becomes more entangled in Judy's messy personal life.",
+    "duration" : 1800,
+    "season" : 1,
+    "sequence" : 2
+  },
+  "3" : {
+    "title" : "It's All My Fault",
+    "caption" : "On what would have been her husband's 50th birthday, Jen clashes with her disapproving mother-in-law over the best way to mark the occasion.",
+    "duration" : 1920,
+    "season" : 1,
+    "sequence" : 3
+  }
+}

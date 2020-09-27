@@ -1,0 +1,100 @@
+type User {
+    id: ID!
+    avatar : String
+    userName: String!
+    email : String!
+    phoneNumber : String!
+    password : String!
+    likes : [Like!]
+    createdAt : String
+    updatedAt : String
+}
+
+enum ContentType {
+    NETFLIX_SERIES
+    TV_SHOW
+    MOVIE
+}
+
+type Content {
+    id : ID!
+    title : String!
+    genres : [Genre!]
+    type : ContentType!
+    caption : String!
+    episodes : [Episode!]
+    duration : Int!
+    actors : [Actor!]
+    likes : [Like!]
+    files : [File!]!
+    isLiked : Boolean!
+    likeCount : Int!
+    createdAt : String
+    updatedAt : String
+}
+
+type Actor {
+    id : ID!
+    name : String!
+    contents : [Content!]
+    createdAt : String
+    updatedAt : String
+}
+
+type Episode {
+    id : ID!
+    season : Int!
+    sequence : Int!
+    content : Content
+    title : String!
+    caption : String!
+    duration : Int!
+    createdAt : String
+    updatedAt : String
+}
+
+enum GenreType {
+    CHUSEOK
+    HALLOWEEN
+    K_DRAMA
+    US_TV_SERIES
+    BRITISH_TV_SERIES
+    ASIAN_TV_SERIES
+    KOREAN_MOVIE
+    US_MOVIE
+    ACTION
+    KIDS
+    ROMANCE
+    TEEN
+    ANIME
+    HISTORY
+    THRILLERS
+    FANTASY
+    ADVANTURES
+    AWARD_WINNINGS
+    DRAMAS
+    CRIME
+    SCI_FI
+}
+
+type Genre {
+    id : ID!
+    name : GenreType!
+    contents : [Content!]
+}
+
+type File {
+    id : ID!
+    url : String!
+    content : Content
+    createdAt: String
+    updatedAt: String
+}
+
+type Like {
+    id : ID!
+    user : User!
+    content : Content!
+    createdAt: String!
+    updatedAt: String!
+}

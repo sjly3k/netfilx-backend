@@ -5,7 +5,7 @@ type User {
     email : String! @unique
     phoneNumber : String! @unique
     password : String!
-    favoriteContents : [Content] @relation(name: "FavoriteContentsOfUser")
+    likes : [Like!]! @relation (name: "LikesOfUser")
     createdAt : DateTime! @createdAt
     updatedAt : DateTime! @updatedAt
 }
@@ -18,13 +18,14 @@ enum ContentType {
 
 type Content {
     id : ID! @id
-    title : String!
-    genres : [Genre] @relation(name: "GenresOfContent")
+    title : String! @unique
+    genres : [Genre!] @relation(name: "GenresOfContent")
     type : ContentType!
     caption : String!
-    episodes : [Episode] @relation(name: "EpisodesOfContent")
-    actors : [Actor] @relation(name: "ActorsOfContent")
-    files : [File] @relation(name: "FilesOfContent")
+    episodes : [Episode!] @relation(name: "EpisodesOfContent")
+    actors : [Actor!] @relation(name: "ActorsOfContent")
+    files : [File!]! @relation(name: "FilesOfContent")
+    likes : [Like!]! @relation (name : "LikesOfContent")
     createdAt : DateTime! @createdAt
     updatedAt : DateTime! @updatedAt
 }
@@ -32,7 +33,7 @@ type Content {
 type Actor {
     id : ID! @id
     name : String! @unique
-    contents : [Content] @relation(name: "ActorsOfContent")
+    contents : [Content!] @relation(name: "ActorsOfContent")
     createdAt : DateTime! @createdAt
     updatedAt : DateTime! @updatedAt
 }
@@ -42,6 +43,9 @@ type Episode {
     content : Content @relation(name: "EpisodesOfContent")
     title : String!
     caption : String!
+    duration : Int!
+    season : Int!
+    sequence : Int!
     createdAt : DateTime! @createdAt
     updatedAt : DateTime! @updatedAt
 }
@@ -73,13 +77,21 @@ enum GenreType {
 type Genre {
     id : ID! @id
     name : GenreType! @unique
-    contents : [Content] @relation(name: "GenresOfContent")
+    contents : [Content!] @relation(name: "GenresOfContent")
 }
 
 type File {
     id : ID! @id
     url : String!
     content : Content @relation(name: "FilesOfContent")
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
+}
+
+type Like {
+    id : ID! @id
+    user : User! @relation (name: "LikesOfUser")
+    content : Content! @relation (name : "LikesOfContent")
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt
 }
