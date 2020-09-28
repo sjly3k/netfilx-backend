@@ -2,7 +2,7 @@ type Mutation {
     createContent(
         title : String!,
         caption : String!,
-        genres : [String!],
+        genres : [GenreType!],
         actors : [String!],
         type : ContentType!,
         files : [String!]
