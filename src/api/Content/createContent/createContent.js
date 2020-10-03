@@ -12,16 +12,15 @@ export default {
             } = args;
 
             for (const genre of genresInput) {
-                const checkGenreExist = prisma.$exists.genre({name : genre})
-                if (checkGenreExist) {
+                const checkGenreExist = await prisma.$exists.genre({name : genre})
+                if (!checkGenreExist) {
                     await prisma.createGenre({name : genre})
                 }
             }
 
             for (const actor of actorsInput) {
-                console.log(actor)
-                const checkActorExist = prisma.$exists.actor({name : actor})
-                if (checkActorExist) {
+                const checkActorExist = await prisma.$exists.actor({name : actor})
+                if (!checkActorExist) {
                     await prisma.createActor({name : actor})
                 }
             }

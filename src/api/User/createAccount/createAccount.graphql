@@ -3,6 +3,6 @@ type Mutation {
         email : String!
         phoneNumber : String!
         password : String!
-        likedContents : String!
+        likedContents : [String!]
     ) : Boolean!
 }

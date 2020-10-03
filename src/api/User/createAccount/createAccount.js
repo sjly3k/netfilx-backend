@@ -11,11 +11,10 @@ export default {
                 email,
                 phoneNumber,
                 password,
-                likedContents : rawLikeContents
+                likedContents
             } = args;
 
             const userName = email.split("@")[0]
-            const likedContents = rawLikeContents.replace(" ", "").split(",")
 
             const exists = await prisma.$exists.user({
                 OR : [
