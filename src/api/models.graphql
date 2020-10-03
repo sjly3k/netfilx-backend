@@ -16,6 +16,13 @@ enum ContentType {
     MOVIE
 }
 
+enum AgeLimitType {
+    ALL
+    OVER_12
+    OVER_15
+    OVER_18
+}
+
 type Content {
     id : ID!
     title : String!
@@ -31,6 +38,8 @@ type Content {
     likeCount : Int!
     createdAt : String
     updatedAt : String
+    is_netflix : Boolean!
+    age_limit : AgeLimitType!
 }
 
 type Actor {

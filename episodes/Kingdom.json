@@ -1,0 +1,44 @@
+{
+  "1" : {
+    "title" : "Episode 1",
+    "caption" : "Officials find notices in Hanyang alleging the king is dead. Crown Prince Lee Chang tries to check on his father, but the young queen stands in his way.",
+    "duration" : 3360,
+    "season" : 1,
+    "sequence" : 1
+  },
+  "2" : {
+    "title" : "Episode 2",
+    "caption" : "Prince Chang and Mu-yeong arrive at Jiyulheon, where they make a horrific discovery. Seo-bi’s story of what she saw eerily resonates with Prince Chang.",
+    "duration" : 3240,
+    "season" : 1,
+    "sequence" : 2
+  },
+  "3" : {
+    "title" : "Episode 3",
+    "caption" : "Night leads to chaos in Dongnae. Cho Hak-ju and the queen oversee the king’s care. Prince Chang reaches a disquieting conclusion and vows to fight back.",
+    "duration" : 3300,
+    "season" : 1,
+    "sequence" : 3
+  },
+  "4" : {
+    "title" : "Episode 1",
+    "caption" : "An unexpected setback in Sangju poses new problems for Prince Chang and the others. Seo-bi and Cho Beom-pal seek safety with Cho Hak-ju.",
+    "duration" : 3120,
+    "season" : 2,
+    "sequence" : 1
+  },
+  "5" : {
+    "title" : "Episode 2",
+    "caption" : "After Prince Chang breaks into Mungyeong Saejae, a nightmare unfolds. Officials search the queen's home, suspecting she is hiding something.",
+    "duration" : 2340,
+    "season" : 2,
+    "sequence" : 2
+  },
+  "6" : {
+    "title" : "Episode 3",
+    "caption" : "When Cho Hak-ju is taken from his custody, Prince Chang goes after him. Seo-bi looks for a way to treat the disease. The queen awaits her prince.",
+    "duration" : 2880,
+    "season" : 2,
+    "sequence" : 3
+  }
+}

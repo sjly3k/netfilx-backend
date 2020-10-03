@@ -8,7 +8,10 @@ export default {
                 title, caption,
                 genres : genresInput,
                 actors : actorsInput,
-                type, files
+                type,
+                files,
+                is_netflix,
+                age_limit
             } = args;
 
             for (const genre of genresInput) {
@@ -35,6 +38,8 @@ export default {
                 actors: {
                     connect: actorsInput.map((name) => ({name : name}))
                 },
+                is_netflix,
+                age_limit
             })
 
             for (const file of files) {
@@ -45,21 +50,22 @@ export default {
                     }
                 });
             }
+            if (type !== "MOVIE") {
+                let Episiodes = require( `../../../../episodes/${content.title}.json`);
+                const EpisiodesKeys = Object.keys(Episiodes)
 
-            let Episiodes = require( `../../../../episodes/${content.title}.json`);
-            const EpisiodesKeys = Object.keys(Episiodes)
-
-            for (const key of EpisiodesKeys) {
-                await prisma.createEpisode({
-                    title: Episiodes[key]["title"],
-                    caption: Episiodes[key]["caption"],
-                    duration: Episiodes[key]["duration"],
-                    season: Episiodes[key]["season"],
-                    sequence: Episiodes[key]["sequence"],
-                    content: {
-                        connect: {id: content.id}
-                    }
-                });
+                for (const key of EpisiodesKeys) {
+                    await prisma.createEpisode({
+                        title: Episiodes[key]["title"],
+                        caption: Episiodes[key]["caption"],
+                        duration: Episiodes[key]["duration"],
+                        season: Episiodes[key]["season"],
+                        sequence: Episiodes[key]["sequence"],
+                        content: {
+                            connect: {id: content.id}
+                        }
+                    });
+                }
             }
             return true
         }

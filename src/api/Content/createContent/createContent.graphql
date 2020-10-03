@@ -5,6 +5,8 @@ type Mutation {
         genres : [GenreType!],
         actors : [String!],
         type : ContentType!,
-        files : [String!]
+        files : [String!],
+        is_netflix : Boolean!,
+        age_limit : AgeLimitType!,
     ) : Boolean!
 }

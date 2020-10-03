@@ -11,7 +11,7 @@ export default {
                 email,
                 phoneNumber,
                 password,
-                likedContents
+                likedContents,
             } = args;
 
             const userName = email.split("@")[0]

@@ -11,9 +11,15 @@ type User {
 }
 
 enum ContentType {
-    NETFLIX_SERIES
     TV_SHOW
     MOVIE
+}
+
+enum AgeLimitType {
+    ALL
+    OVER_12
+    OVER_15
+    OVER_18
 }
 
 type Content {
@@ -28,6 +34,8 @@ type Content {
     likes : [Like!]! @relation (name : "LikesOfContent")
     createdAt : DateTime! @createdAt
     updatedAt : DateTime! @updatedAt
+    is_netflix : Boolean!
+    age_limit : AgeLimitType!
 }
 
 type Actor {
