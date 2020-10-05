@@ -1,5 +1,6 @@
 import {prisma} from "../../../../generated/prisma-client";
 
+// files 해결
 export default {
     Mutation : {
         createContent : async (_, args) => {
@@ -11,9 +12,11 @@ export default {
                 type,
                 files,
                 is_netflix,
-                age_limit
+                age_limit,
+                duration
             } = args;
 
+            console.log(files)
             for (const genre of genresInput) {
                 const checkGenreExist = await prisma.$exists.genre({name : genre})
                 if (!checkGenreExist) {
@@ -39,12 +42,14 @@ export default {
                     connect: actorsInput.map((name) => ({name : name}))
                 },
                 is_netflix,
-                age_limit
+                age_limit,
+                duration
             })
 
             for (const file of files) {
                 await prisma.createFile({
-                    url: file,
+                    url: file.url,
+                    type : file.type,
                     content: {
                         connect: {id: content.id}
                     }

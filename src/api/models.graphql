@@ -30,7 +30,7 @@ type Content {
     type : ContentType!
     caption : String!
     episodes : [Episode!]
-    duration : Int!
+    duration : Int
     actors : [Actor!]
     likes : [Like!]
     files : [File!]!
@@ -92,9 +92,17 @@ type Genre {
     contents : [Content!]
 }
 
+enum FileType {
+    MAIN
+    DESCRIBE
+    EPISODE
+}
+
+
 type File {
     id : ID!
     url : String!
+    type : FileType!
     content : Content
     createdAt: String
     updatedAt: String

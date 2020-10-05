@@ -36,6 +36,7 @@ type Content {
     updatedAt : DateTime! @updatedAt
     is_netflix : Boolean!
     age_limit : AgeLimitType!
+    duration : Int
 }
 
 type Actor {
@@ -88,9 +89,15 @@ type Genre {
     contents : [Content!] @relation(name: "GenresOfContent")
 }
 
+enum FileType {
+    MAIN
+    DESCRIBE
+}
+
 type File {
     id : ID! @id
     url : String!
+    type : FileType!
     content : Content @relation(name: "FilesOfContent")
     createdAt: DateTime! @createdAt
     updatedAt: DateTime! @updatedAt

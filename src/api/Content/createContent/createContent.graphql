@@ -1,3 +1,8 @@
+input FileInput {
+    url : String!,
+    type : FileType!,
+}
+
 type Mutation {
     createContent(
         title : String!,
@@ -5,8 +10,9 @@ type Mutation {
         genres : [GenreType!],
         actors : [String!],
         type : ContentType!,
-        files : [String!],
+        files : [FileInput!],
         is_netflix : Boolean!,
         age_limit : AgeLimitType!,
+        duration : Int
     ) : Boolean!
 }

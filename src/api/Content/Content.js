@@ -8,8 +8,8 @@ export default {
         files: parent => prisma.content({id: parent.id}).files(),
         likes: parent => prisma.content({id: parent.id}).likes(),
         isLiked: (parent, _, {request}) => {
-            const {user} = request.user
-            const { id } = parent.id
+            const { user } = request
+            const { id } = parent
             return prisma.$exists.like({
                 AND: [
                     {
