@@ -1,0 +1,23 @@
+{
+  "1" : {
+    "title" : "Episode 1",
+    "caption" : "Five friends whose friendship goes back to their days in med school are brought back together when a phone call interrupts each of their busy lives.",
+    "duration" : 4920,
+    "season" : 1,
+    "sequence" : 1
+  },
+  "2" : {
+    "title" : "Episode 2",
+    "caption" : "For the first time in 20 years, everyone's finally working under the same roof. A patient with a familiar name finds Chae Song-hwa.",
+    "duration" : 4920,
+    "season" : 1,
+    "sequence" : 2
+  },
+  "3" : {
+    "title" : "Episode 3",
+    "caption" : "The hospital's med students are inspired by the doctors, who each look after their patients in their own ways. Lee Ik-jun gets a welcome visitor.",
+    "duration" : 5280,
+    "season" : 1,
+    "sequence" : 3
+  }
+}

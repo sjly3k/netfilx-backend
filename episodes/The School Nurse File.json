@@ -1,0 +1,23 @@
+{
+  "1" : {
+    "title" : "Episode 1",
+    "caption" : "Ahn Eun-young enters the forbidden basement as Hong In-pyo reluctantly trails along. They join hands when a dark secret shakes up the school.",
+    "duration" : 3000,
+    "season" : 1,
+    "sequence" : 1
+  },
+  "2" : {
+    "title" : "Episode 2",
+    "caption" : "When the bond between two troublemaking students catches Eun-young's eye, In-pyo proposes unconventional ideas to split and keep them apart.",
+    "duration" : 3000,
+    "season" : 1,
+    "sequence" : 2
+  },
+  "3" : {
+    "title" : "Episode 3",
+    "caption" : "Eun-young and In-pyo get knotty behind closed doors. With Mackenzie’s support, a student settles the score with the basketball team.",
+    "duration" : 2800,
+    "season" : 1,
+    "sequence" : 3
+  }
+}

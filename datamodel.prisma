@@ -92,6 +92,9 @@ type Genre {
 enum FileType {
     MAIN
     DESCRIBE
+    TITLE
+    EPISODE
+    RECOMMEND
 }
 
 type File {
