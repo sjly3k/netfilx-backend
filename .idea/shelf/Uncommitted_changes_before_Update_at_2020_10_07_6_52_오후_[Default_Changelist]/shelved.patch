@@ -1,0 +1,91 @@
+Index: src/api/models.graphql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>type User {\n    id: ID!\n    avatar : String\n    userName: String!\n    email : String!\n    phoneNumber : String!\n    password : String!\n    likes : [Like!]\n    createdAt : String\n    updatedAt : String\n}\n\nenum ContentType {\n    NETFLIX_SERIES\n    TV_SHOW\n    MOVIE\n}\n\nenum AgeLimitType {\n    ALL\n    OVER_12\n    OVER_15\n    OVER_18\n}\n\ntype Content {\n    id : ID!\n    title : String!\n    genres : [Genre!]\n    type : ContentType!\n    caption : String!\n    episodes : [Episode!]\n    duration : Int\n    actors : [Actor!]\n    likes : [Like!]\n    files : [File!]!\n    isLiked : Boolean!\n    likeCount : Int!\n    createdAt : String\n    updatedAt : String\n    is_netflix : Boolean!\n    age_limit : AgeLimitType!\n}\n\ntype Actor {\n    id : ID!\n    name : String!\n    contents : [Content!]\n    createdAt : String\n    updatedAt : String\n}\n\ntype Episode {\n    id : ID!\n    season : Int!\n    sequence : Int!\n    content : Content\n    title : String!\n    caption : String!\n    duration : Int!\n    createdAt : String\n    updatedAt : String\n}\n\nenum GenreType {\n    CHUSEOK\n    HALLOWEEN\n    K_DRAMA\n    US_TV_SERIES\n    BRITISH_TV_SERIES\n    ASIAN_TV_SERIES\n    KOREAN_MOVIE\n    US_MOVIE\n    ACTION\n    KIDS\n    ROMANCE\n    TEEN\n    ANIME\n    HISTORY\n    THRILLERS\n    FANTASY\n    ADVANTURES\n    AWARD_WINNINGS\n    DRAMAS\n    CRIME\n    SCI_FI\n}\n\ntype Genre {\n    id : ID!\n    name : GenreType!\n    contents : [Content!]\n}\n\nenum FileType {\n    MAIN\n    DESCRIBE\n    EPISODE\n}\n\n\ntype File {\n    id : ID!\n    url : String!\n    type : FileType!\n    content : Content\n    createdAt: String\n    updatedAt: String\n}\n\ntype Like {\n    id : ID!\n    user : User!\n    content : Content!\n    createdAt: String!\n    updatedAt: String!\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/api/models.graphql	(revision f87c6b2b58b338911a83f869c5e1d0e539682eed)
++++ src/api/models.graphql	(date 1601900634913)
+@@ -95,7 +95,7 @@
+ enum FileType {
+     MAIN
+     DESCRIBE
+-    EPISODE
++    TITLE
+ }
+ 
+ 
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\n  \"name\": \"netfilx-backend\",\n  \"version\": \"1.0.0\",\n  \"main\": \"index.js\",\n  \"repository\": \"https://github.com/sjly3k/netfilx-backend.git\",\n  \"author\": \"sjly3k <sjly3k@naver.com>\",\n  \"license\": \"MIT\",\n  \"dependencies\": {\n    \"@babel/cli\": \"^7.4.4\",\n    \"@babel/core\": \"^7.2.2\",\n    \"@babel/node\": \"^7.2.2\",\n    \"@babel/preset-env\": \"^7.3.1\",\n    \"@babel/runtime\": \"^7.4.5\",\n    \"aws-sdk\": \"^2.483.0\",\n    \"bcrypt\": \"^5.0.0\",\n    \"copy\": \"^0.3.2\",\n    \"dotenv\": \"^6.2.0\",\n    \"graphql-tools\": \"^4.0.4\",\n    \"graphql-yoga\": \"^1.17.4\",\n    \"jsonwebtoken\": \"^8.5.1\",\n    \"merge-graphql-schemas\": \"^1.5.8\",\n    \"morgan\": \"^1.10.0\",\n    \"multer\": \"^1.4.1\",\n    \"multer-s3\": \"^2.9.0\",\n    \"nodemailer\": \"^5.1.1\",\n    \"nodemailer-sendgrid-transport\": \"^0.2.0\",\n    \"passport\": \"^0.4.1\",\n    \"passport-jwt\": \"^4.0.0\",\n    \"prisma\": \"^1.33.0\",\n    \"prisma-client-lib\": \"^1.34.10\"\n  },\n  \"devDependencies\": {\n    \"@babel/plugin-transform-runtime\": \"^7.4.4\",\n    \"nodemon\": \"^1.18.10\"\n  },\n  \"scripts\": {\n    \"dev\": \"nodemon --exec babel-node src/server.js\",\n    \"deploy\": \"prisma deploy --force\",\n    \"generate\": \"prisma generate\",\n    \"prisma\": \"yarn run deploy && yarn run generate\"\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- package.json	(revision f87c6b2b58b338911a83f869c5e1d0e539682eed)
++++ package.json	(date 1601888887373)
+@@ -35,7 +35,7 @@
+   },
+   "scripts": {
+     "dev": "nodemon --exec babel-node src/server.js",
+-    "deploy": "prisma deploy --force",
++    "deploy": "prisma deploy",
+     "generate": "prisma generate",
+     "prisma": "yarn run deploy && yarn run generate"
+   }
+Index: datamodel.prisma
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>type User {\n    id: ID! @id\n    avatar : String @default(value: \"https://scontent-hkg3-1.cdninstagram.com/vp/51ea9f9……74447047_1561961433825017856_n.jpg?_nc_ht=scontent-hkg3-1.cdninstagram.com\")\n    userName: String!\n    email : String! @unique\n    phoneNumber : String! @unique\n    password : String!\n    likes : [Like!]! @relation (name: \"LikesOfUser\")\n    createdAt : DateTime! @createdAt\n    updatedAt : DateTime! @updatedAt\n}\n\nenum ContentType {\n    TV_SHOW\n    MOVIE\n}\n\nenum AgeLimitType {\n    ALL\n    OVER_12\n    OVER_15\n    OVER_18\n}\n\ntype Content {\n    id : ID! @id\n    title : String! @unique\n    genres : [Genre!] @relation(name: \"GenresOfContent\")\n    type : ContentType!\n    caption : String!\n    episodes : [Episode!] @relation(name: \"EpisodesOfContent\")\n    actors : [Actor!] @relation(name: \"ActorsOfContent\")\n    files : [File!]! @relation(name: \"FilesOfContent\")\n    likes : [Like!]! @relation (name : \"LikesOfContent\")\n    createdAt : DateTime! @createdAt\n    updatedAt : DateTime! @updatedAt\n    is_netflix : Boolean!\n    age_limit : AgeLimitType!\n    duration : Int\n}\n\ntype Actor {\n    id : ID! @id\n    name : String! @unique\n    contents : [Content!] @relation(name: \"ActorsOfContent\")\n    createdAt : DateTime! @createdAt\n    updatedAt : DateTime! @updatedAt\n}\n\ntype Episode {\n    id : ID! @id\n    content : Content @relation(name: \"EpisodesOfContent\")\n    title : String!\n    caption : String!\n    duration : Int!\n    season : Int!\n    sequence : Int!\n    createdAt : DateTime! @createdAt\n    updatedAt : DateTime! @updatedAt\n}\n\nenum GenreType {\n    CHUSEOK\n    HALLOWEEN\n    K_DRAMA\n    US_TV_SERIES\n    BRITISH_TV_SERIES\n    ASIAN_TV_SERIES\n    KOREAN_MOVIE\n    US_MOVIE\n    ACTION\n    KIDS\n    ROMANCE\n    TEEN\n    ANIME\n    HISTORY\n    THRILLERS\n    FANTASY\n    ADVANTURES\n    AWARD_WINNINGS\n    DRAMAS\n    CRIME\n    SCI_FI\n}\n\ntype Genre {\n    id : ID! @id\n    name : GenreType! @unique\n    contents : [Content!] @relation(name: \"GenresOfContent\")\n}\n\nenum FileType {\n    MAIN\n    DESCRIBE\n}\n\ntype File {\n    id : ID! @id\n    url : String!\n    type : FileType!\n    content : Content @relation(name: \"FilesOfContent\")\n    createdAt: DateTime! @createdAt\n    updatedAt: DateTime! @updatedAt\n}\n\ntype Like {\n    id : ID! @id\n    user : User! @relation (name: \"LikesOfUser\")\n    content : Content! @relation (name : \"LikesOfContent\")\n    createdAt: DateTime! @createdAt\n    updatedAt: DateTime! @updatedAt\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- datamodel.prisma	(revision f87c6b2b58b338911a83f869c5e1d0e539682eed)
++++ datamodel.prisma	(date 1601888878133)
+@@ -92,6 +92,7 @@
+ enum FileType {
+     MAIN
+     DESCRIBE
++    TITLE
+ }
+ 
+ type File {
+Index: testEpisodes.json
+===================================================================
+--- testEpisodes.json	(revision f87c6b2b58b338911a83f869c5e1d0e539682eed)
++++ testEpisodes.json	(revision f87c6b2b58b338911a83f869c5e1d0e539682eed)
+@@ -1,32 +0,0 @@
+-{
+-  "1" : {
+-    "title" : "The Boy Who Fed On Nightmares",
+-    "caption" : "Moon Gang-tae has a striking run-in with his brother's favorite author, Ko Mun-yeong, when she comes to his hospital to read to the children.",
+-    "duration" : 4440,
+-    "season" : 1,
+-    "sequence" : 1,
+-    "content" : {
+-      "connect" : { "id" : "ckfkihhrf002207382xj6rkxw" }
+-    }
+-  },
+-  "2" : {
+-    "title" : "The Lady In Red Shoes",
+-    "caption" : "Mun-yeong invites Moon Sang-tae to a book signing event that ends with a nasty commotion. Gang-tae hears about a job opening in his hometown.",
+-    "duration" : 4380,
+-    "season" : 1,
+-    "sequence" : 2,
+-    "content" : {
+-      "connect" : { "id" : "ckfkihhrf002207382xj6rkxw"}
+-    }
+-  },
+-  "3" : {
+-    "title" : "Sleeping Witch",
+-    "caption" : "Having followed Gang-tae, Mun-yeong begins teaching literature classes at his new hospital. Chaos breaks out when a VIP patient runs away.",
+-    "duration" : 4440,
+-    "season" : 1,
+-    "sequence" : 3,
+-    "content" : {
+-      "connect" : { "id" : "ckfkihhrf002207382xj6rkxw"}
+-    }
+-  }
+-}
+\ No newline at end of file
