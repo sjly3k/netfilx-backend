@@ -5,7 +5,7 @@ type User {
     email : String! @unique
     phoneNumber : String! @unique
     password : String!
-    likes : [Like!]! @relation (name: "LikesOfUser")
+    likes : [Like!]! @relation (name: "LikesOfUser", onDelete:CASCADE)
     createdAt : DateTime! @createdAt
     updatedAt : DateTime! @updatedAt
 }
@@ -28,10 +28,10 @@ type Content {
     genres : [Genre!] @relation(name: "GenresOfContent")
     type : ContentType!
     caption : String!
-    episodes : [Episode!] @relation(name: "EpisodesOfContent")
+    episodes : [Episode!] @relation(name: "EpisodesOfContent", onDelete:CASCADE)
     actors : [Actor!] @relation(name: "ActorsOfContent")
-    files : [File!]! @relation(name: "FilesOfContent")
-    likes : [Like!]! @relation (name : "LikesOfContent")
+    files : [File!]! @relation(name: "FilesOfContent", onDelete:CASCADE)
+    likes : [Like!]! @relation (name : "LikesOfContent", onDelete:CASCADE)
     createdAt : DateTime! @createdAt
     updatedAt : DateTime! @updatedAt
     is_netflix : Boolean!
