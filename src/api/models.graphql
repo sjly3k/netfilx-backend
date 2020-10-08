@@ -6,6 +6,7 @@ type User {
     phoneNumber : String!
     password : String!
     likes : [Like!]
+    payment : Payment!
     createdAt : String
     updatedAt : String
 }
@@ -114,6 +115,20 @@ type Like {
     id : ID!
     user : User!
     content : Content!
+    createdAt: String!
+    updatedAt: String!
+}
+
+enum PlanType {
+    PREMIUM
+    STANDARD
+    BASIC
+}
+
+type Payment {
+    id : ID!
+    user : User!
+    plan : PlanType!
     createdAt: String!
     updatedAt: String!
 }

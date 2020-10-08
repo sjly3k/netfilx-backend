@@ -5,9 +5,24 @@ type User {
     email : String! @unique
     phoneNumber : String! @unique
     password : String!
-    likes : [Like!]! @relation (name: "LikesOfUser", onDelete:CASCADE)
+    likes : [Like!]! @relation(name: "LikesOfUser", onDelete:CASCADE)
+    payment : Payment! @relation(name: "PaymentOfUser", onDelete:CASCADE)
     createdAt : DateTime! @createdAt
     updatedAt : DateTime! @updatedAt
+}
+
+enum PlanType {
+    PREMIUM
+    STANDARD
+    BASIC
+}
+
+type Payment {
+    id : ID! @id
+    user : User! @relation(name: "PaymentOfUser", link: INLINE)
+    plan : PlanType!
+    createdAt: DateTime! @createdAt
+    updatedAt: DateTime! @updatedAt
 }
 
 enum ContentType {
@@ -31,7 +46,7 @@ type Content {
     episodes : [Episode!] @relation(name: "EpisodesOfContent", onDelete:CASCADE)
     actors : [Actor!] @relation(name: "ActorsOfContent")
     files : [File!]! @relation(name: "FilesOfContent", onDelete:CASCADE)
-    likes : [Like!]! @relation (name : "LikesOfContent", onDelete:CASCADE)
+    likes : [Like!]! @relation(name : "LikesOfContent", onDelete:CASCADE)
     createdAt : DateTime! @createdAt
     updatedAt : DateTime! @updatedAt
     is_netflix : Boolean!
