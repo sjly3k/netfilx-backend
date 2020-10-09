@@ -6,9 +6,10 @@ type User {
     phoneNumber : String!
     password : String!
     likes : [Like!]
-    payment : Payment!
+    payment : Payment
     createdAt : String
     updatedAt : String
+    token : String
 }
 
 enum ContentType {

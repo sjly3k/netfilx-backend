@@ -1,0 +1,6 @@
+type Mutation {
+    createPayment(
+        userId : String!,
+        plan : PlanType!,
+    ) : Boolean!
+}

@@ -14,7 +14,11 @@ export default {
 
             if (user !== null) {
                 if (bcrypt.compareSync(password, user.password)) {
-                    return generateToken(user.id)
+                    await prisma.updateUser({
+                        where : { email },
+                        data : { token : generateToken(user.id)}
+                    })
+                    return await prisma.user({email})
                 } else {
                     throw Error("Wrong Email & Password Combination.")
                 }

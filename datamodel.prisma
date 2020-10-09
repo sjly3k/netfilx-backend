@@ -6,9 +6,10 @@ type User {
     phoneNumber : String! @unique
     password : String!
     likes : [Like!]! @relation(name: "LikesOfUser", onDelete:CASCADE)
-    payment : Payment! @relation(name: "PaymentOfUser", onDelete:CASCADE)
+    payment : Payment @relation(name: "PaymentOfUser", onDelete:CASCADE)
     createdAt : DateTime! @createdAt
     updatedAt : DateTime! @updatedAt
+    token : String
 }
 
 enum PlanType {

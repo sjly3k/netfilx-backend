@@ -1,4 +1,5 @@
 export const isAuthenticated = (request) => {
+    console.log(request.user)
     if (request.user) {
         return true
     } else {

@@ -4,7 +4,7 @@ import {isAuthenticated} from "../../../middlewares";
 export default {
     Mutation : {
         toggleLike : async (_, args, {request}) => {
-            if(isAuthenticated(request)) {
+            if (isAuthenticated(request)) {
                 const { user : { id : userId }} = request
                 const { contentId } = args
 
