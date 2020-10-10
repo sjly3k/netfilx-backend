@@ -1,6 +1,7 @@
 generated
 img
 node_modules
+build
 
 *.xml
 *.lock
